@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('header') %>
+  <body>
+    <div class="container">
+      <h1 class="my-4 text-center">Patient Record Contract</h1>
+
+      <!-- Add Patient Form -->
+      <div class="card mb-4">
+        <div class="card-header">Add Patient</div>
+        <div class="card-body">
+          <form id="addPatientForm">
+            <div class="mb-3">
+              <label for="patientID" class="form-label">ID</label>
+              
+              <input
+                type="text"
+                class="form-control"
+                id="patientID"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="patientName" class="form-label">Name</label>
+              
+              <input
+                type="text"
+                class="form-control"
+                id="patientName"
+                required
+              />
+            </div>
+
+
+
+            <div class="mb-3">
+              <label for="patientRecord" class="form-label">Record</label>
+              <textarea
+                type="textarea"
+                class="form-control very-large-textarea"
+                id="patientRecord"
+                required></textarea>
+            
+            </div>
+            <div class="mb-3">
+              <label for="doctorAddresses" class="form-label"
+                >Doctor Addresses (comma-separated)</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="doctorAddresses"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Add Patient</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Additional Card with Select Tag -->
+      <div class="card mb-4">
+        <div class="card-header">Find Recipiants </div>
+        <div class="card-body">
+          <form id="selectPatientForm">
+            <div class="mb-3">
+              <label for="patientType" class="form-label">Patient Type</label>
+              <select  class="form-select" id="patientType" required>
+                <% for (var key in account_keys) { %>
+                  <option><%= key %></option>
+                  <% } %>
+                </select >
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+
+    <script src="/js/insert.js"></script>
+
+  </body>
+</html>

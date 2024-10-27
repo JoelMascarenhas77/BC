@@ -1,0 +1,6 @@
+.very-large-textarea {
+  height: 300px; /* Height of the textarea */
+  font-size: 1.2rem; /* Font size */
+  padding: 10px; /* Padding inside the textarea */
+  width: 100%; /* Full width */
+}

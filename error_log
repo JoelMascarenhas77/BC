@@ -1,0 +1,31 @@
+solidity class and file name must be the same
+const { accounts } = require("./public/js/info.js");
+extra slash is not neaded in routers
+
+
+
+
+<script>
+      // Assuming the account is stored in localStorage (or cookies in a real app)
+      const selectedAccount = localStorage.getItem("account");
+
+      // Display the selected account in the accountAddress paragraph
+      const accountAddressElement = document.getElementById("accountAddress");
+      if (selectedAccount) {
+        accountAddressElement.textContent = `Account: ${selectedAccount}`;
+      } else {
+        accountAddressElement.textContent = "Account: No account logged in";
+      }
+
+      // Handle logout
+      document
+        .getElementById("logoutForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          // Clear the stored account (simulate logging out)
+          localStorage.removeItem("account");
+
+          // Redirect to the login page
+          window.location.href = "/login.html";
+        });
+    </script>

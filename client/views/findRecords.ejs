@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('header') %>
+
+  <body>
+    <div class="container">
+      <h1 class="my-4 text-center">Patient Record Contract</h1>
+
+      <div class="card mb-4">
+        <div class="card-header">Retrieve Patient</div>
+        <div class="card-body">
+          <form id="getPatientForm">
+            <div class="mb-3">
+              <label for="patientId" class="form-label">Patient ID</label>
+              <input
+                type="number"
+                class="form-control"
+                id="patientId"
+                required
+                placeholder="Enter Patient ID"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Get Patient</button>
+          </form>
+          <div id="patientDetails" class="mt-4"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include the EthCrypto library -->
+
+    <!-- Optional: for Crypto -->
+    <script></script>
+
+    <script src="/js/find.js"></script>
+  </body>
+</html>

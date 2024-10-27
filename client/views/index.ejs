@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('header') %>
+  <body>
+    <div class="container">
+      <h1 class="my-4 text-center">Logout from Patient Record Contract</h1>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          <h1><%= acc_name %></h1>
+          <p><%= acc_address %></p>
+        </div>
+        <div class="card-body">
+          <p id="accountAddress" class="mb-4">Account:</p>
+          <form id="logoutForm" action="/logout">
+            <button type="submit" class="btn btn-danger">Logout</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Adding buttons for Adding and Finding Records -->
+      <div class="text-center">
+        <a href="/record/addrecords" class="btn btn-primary mr-2"
+          >Add Records</a
+        >
+
+        <a href="/record/findrecords" class="btn btn-success">Find Records</a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+body {
+  background-color: black;
+}
+
+h1 {
+  color: #007bff;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.btn-primary {
+  background-color: #007b;
+}
+
+.very-large-textarea {
+  height: 300px; /* Adjust height for long records */
+  font-size: 1.2rem; /* Increase font size for better readability */
+  padding: 10px; /* Add padding for comfort */
+  width: 100%; /* Full width */
+}

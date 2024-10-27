@@ -1,0 +1,17 @@
+# Ignore node modules
+node_modules/
+
+# Ignore lock files
+package-lock.json
+yarn.lock
+
+# Ignore environment files
+.env
+
+# Ignore migration files
+migrations/
+db/migrate/
+
+# Ignore build files (optional)
+build/
+dist/
