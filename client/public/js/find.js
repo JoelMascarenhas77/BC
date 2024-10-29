@@ -26,8 +26,12 @@ document
           document.getElementById("patientDetails").innerHTML = `
             <p><strong>Name:</strong> <span id="name">${patient.name}</span></p>
             <input type="hidden" id="init_v" value="${patient.init_v}">
-            <input id="doctorNames" value="${patient.doctors.join(", ")}">
-            <input  id="encKeys" value="${patient.enc_keys.join(", ")}">
+            <input type="hidden id="doctorNames" value="${patient.doctors.join(
+              ", "
+            )}">
+            <input type="hidden" id="encKeys" value="${patient.enc_keys.join(
+              ", "
+            )}">
             <p><strong>Record:</strong></p>
             <textarea id="patientRecord" rows="4" cols="50" readonly>${
               patient.enc_record

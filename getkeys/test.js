@@ -3,8 +3,11 @@ const EthCrypto = require("eth-crypto");
 
 async function encryptAndDecrypt() {
   // Step 1: Generate a Symmetric Key and IV
-  const symmetricKey = crypto.randomBytes(32); // 256 bits for AES-256
-  const iv = crypto.randomBytes(16); // 128 bits for AES
+  const symmetricKey = Buffer.from(
+    "8466fb05cb14cec833588741ff7b40136247c53ae3bf4ca26cf4ebaffbf68916",
+    "hex"
+  );
+  const iv = Buffer.from("3419933c9fbd4a3842728a9906b946b0", "hex");
 
   // Step 2: Encrypt the Message Using the Symmetric Key
   const message = "Air on the G strings";
@@ -31,7 +34,7 @@ async function encryptAndDecrypt() {
 
   // Assume you have the private key for decryption
   const privateKey =
-    "b3963cc94941a71fd08cb46aa6243e7661f1462e21d1feb3bd54d52ba93f0257"; // Replace with the actual private key
+    "0xb3963cc94941a71fd08cb46aa6243e7661f1462e21d1feb3bd54d52ba93f0257"; // Replace with the actual private key
 
   // Step 5: Decrypt the Symmetric Key Using the Private Key
   const decryptedSymmetricKey = await EthCrypto.decryptWithPrivateKey(

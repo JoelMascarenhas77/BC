@@ -12,32 +12,22 @@ const contractABI = require("../build/contracts/Record.json").abi;
 const contractAddress = "0x3D549Ed7Ec508bE4959C56D01578ca6b7e6cA2D5";
 const recordContract = new web3.eth.Contract(contractABI, contractAddress);
 
-// Function to convert a hex string to Uint8Array
-
 // Function to encrypt data using a public key
 async function encryptWithPublicKey(publicKey, message) {
   const encrypted = await EthCrypto.encryptWithPublicKey(publicKey, message);
   return EthCrypto.cipher.stringify(encrypted); // Convert to a string format
 }
 
-// Function to decrypt data using a private key
-// async function decryptWithPrivateKey(privateKey, encryptedMessage) {
-//   const decrypted = await EthCrypto.decryptWithPrivateKey(
-//     privateKey,
-//     encryptedMessage
-//   );
-//   return decrypted; // Decrypted message
-// }
-
-// Add a new patient
 router.post("/add-patient", async (req, res) => {
   const account = req.cookies.address.trim();
 
   const { ID, name, record, doctors } = req.body;
 
-  const key = crypto.randomBytes(32);
-  console.log("sdfsdf");
-  const iv = crypto.randomBytes(16);
+  const key = Buffer.from(
+    "8466fb05cb14cec833588741ff7b40136247c53ae3bf4ca26cf4ebaffbf68916",
+    "hex"
+  );
+  const iv = Buffer.from("3419933c9fbd4a3842728a9906b946b0", "hex");
 
   // Encrypt the patient's record using AES
   const cipher = crypto.createCipheriv("aes-256-cbc", key, iv);
@@ -60,14 +50,14 @@ router.post("/add-patient", async (req, res) => {
       .addPatient(ID, name, enc_record, iv.toString("hex"), doctors, enc_keys)
       .estimateGas({ from: account });
 
-    console.log("Estimated Gas:", estimatedGas); // Log the estimated gas
+    //console.log("Estimated Gas:", estimatedGas); // Log the estimated gas
 
     // Send the transaction with the estimated gas limit
     const receipt = await recordContract.methods
       .addPatient(ID, name, enc_record, iv.toString("hex"), doctors, enc_keys)
       .send({ from: account, gas: estimatedGas + 10000 });
 
-    console.log("Transaction Receipt:", receipt); // Log the transaction receipt
+    //console.log("Transaction Receipt:", receipt); // Log the transaction receipt
     res.json({ success: true, receipt });
   } catch (error) {
     console.error("Error adding patient:", error);
@@ -83,7 +73,6 @@ router.post("/add-patient", async (req, res) => {
 
 router.get("/get-patient/:id", async (req, res) => {
   const patientId = req.params.id;
-  const doctor = req.cookies.username;
 
   try {
     // Call the smart contract to get patient data
@@ -95,7 +84,7 @@ router.get("/get-patient/:id", async (req, res) => {
     const init_v = patient[2];
     const doctors = patient[3];
     const enc_keys = patient[4];
-
+    console.log("aasdasd");
     res.json({
       success: true,
       patient: { name, enc_record, init_v, doctors, enc_keys },
