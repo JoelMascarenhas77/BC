@@ -9,9 +9,6 @@ yarn.lock
 .env
 
 # Ignore migration files
-migrations/
-db/migrate/
 
 # Ignore build files (optional)
 build/
-dist/
