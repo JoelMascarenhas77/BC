@@ -9,7 +9,7 @@ const web3 = new Web3("http://127.0.0.1:7545");
 
 // Load contract ABI and address
 const contractABI = require("../build/contracts/Record.json").abi;
-const contractAddress = "0x3D549Ed7Ec508bE4959C56D01578ca6b7e6cA2D5";
+const contractAddress = "0x6D17f002221fb85998AeDa1da50BCe04DCeb4125";
 const recordContract = new web3.eth.Contract(contractABI, contractAddress);
 
 // Function to encrypt data using a public key
@@ -50,14 +50,14 @@ router.post("/add-patient", async (req, res) => {
       .addPatient(ID, name, enc_record, iv.toString("hex"), doctors, enc_keys)
       .estimateGas({ from: account });
 
-    //console.log("Estimated Gas:", estimatedGas); // Log the estimated gas
+    console.log("Estimated Gas:", estimatedGas); // Log the estimated gas
 
     // Send the transaction with the estimated gas limit
     const receipt = await recordContract.methods
       .addPatient(ID, name, enc_record, iv.toString("hex"), doctors, enc_keys)
       .send({ from: account, gas: estimatedGas + 10000 });
 
-    //console.log("Transaction Receipt:", receipt); // Log the transaction receipt
+    console.log("Transaction Receipt:", receipt); // Log the transaction receipt
     res.json({ success: true, receipt });
   } catch (error) {
     console.error("Error adding patient:", error);

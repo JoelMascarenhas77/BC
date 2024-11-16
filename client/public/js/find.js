@@ -26,7 +26,7 @@ document
           document.getElementById("patientDetails").innerHTML = `
             <p><strong>Name:</strong> <span id="name">${patient.name}</span></p>
             <input type="hidden" id="init_v" value="${patient.init_v}">
-            <input type="hidden id="doctorNames" value="${patient.doctors.join(
+            <input type="hidden" id="doctorNames" value="${patient.doctors.join(
               ", "
             )}">
             <input type="hidden" id="encKeys" value="${patient.enc_keys.join(
